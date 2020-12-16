@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 2.2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogr="http://osgeo.org/gdal" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata><bounds minlat="37.118710999999998" minlon="-8.618387000000000" maxlat="37.126496000000003" maxlon="-8.582802400000000"/></metadata>                  
+<trk>
+  <name>Passadiços do Alvor</name>
+  <extensions>
+    <ogr:tessellate>1</ogr:tessellate>
+  </extensions>
+  <trkseg>
+    <trkpt lat="37.1210043" lon="-8.5828024">
+    </trkpt>
+    <trkpt lat="37.120777" lon="-8.583033">
+    </trkpt>
+    <trkpt lat="37.120785" lon="-8.583384">
+    </trkpt>
+    <trkpt lat="37.122016" lon="-8.588688">
+    </trkpt>
+    <trkpt lat="37.122524" lon="-8.590143">
+    </trkpt>
+    <trkpt lat="37.122913" lon="-8.593707">
+    </trkpt>
+    <trkpt lat="37.123364" lon="-8.595424">
+    </trkpt>
+    <trkpt lat="37.12378" lon="-8.59852">
+    </trkpt>
+    <trkpt lat="37.124188" lon="-8.599576">
+    </trkpt>
+    <trkpt lat="37.12406" lon="-8.600763">
+    </trkpt>
+    <trkpt lat="37.124374" lon="-8.602535">
+    </trkpt>
+    <trkpt lat="37.1244149" lon="-8.6031614">
+    </trkpt>
+    <trkpt lat="37.12449" lon="-8.604217">
+    </trkpt>
+    <trkpt lat="37.1244" lon="-8.604799">
+    </trkpt>
+    <trkpt lat="37.124022" lon="-8.604992">
+    </trkpt>
+    <trkpt lat="37.124206" lon="-8.605701">
+    </trkpt>
+    <trkpt lat="37.124052" lon="-8.606747">
+    </trkpt>
+    <trkpt lat="37.124139" lon="-8.607577">
+    </trkpt>
+    <trkpt lat="37.12297" lon="-8.608036">
+    </trkpt>
+    <trkpt lat="37.122588" lon="-8.610697">
+    </trkpt>
+    <trkpt lat="37.123007" lon="-8.61109">
+    </trkpt>
+    <trkpt lat="37.123199" lon="-8.61062">
+    </trkpt>
+    <trkpt lat="37.12361" lon="-8.610342">
+    </trkpt>
+    <trkpt lat="37.123338" lon="-8.613134">
+    </trkpt>
+    <trkpt lat="37.123771" lon="-8.614847">
+    </trkpt>
+    <trkpt lat="37.123749" lon="-8.615322">
+    </trkpt>
+    <trkpt lat="37.123565" lon="-8.616095">
+    </trkpt>
+    <trkpt lat="37.122991" lon="-8.617337">
+    </trkpt>
+    <trkpt lat="37.122093" lon="-8.618185">
+    </trkpt>
+    <trkpt lat="37.121276" lon="-8.618387">
+    </trkpt>
+    <trkpt lat="37.118711" lon="-8.61791">
+    </trkpt>
+    <trkpt lat="37.121457" lon="-8.618378">
+    </trkpt>
+    <trkpt lat="37.122268" lon="-8.618025">
+    </trkpt>
+    <trkpt lat="37.123153" lon="-8.61715">
+    </trkpt>
+    <trkpt lat="37.123789" lon="-8.615312">
+    </trkpt>
+    <trkpt lat="37.123401" lon="-8.613601">
+    </trkpt>
+    <trkpt lat="37.12335" lon="-8.612765">
+    </trkpt>
+    <trkpt lat="37.123494" lon="-8.610997">
+    </trkpt>
+    <trkpt lat="37.124236" lon="-8.607766">
+    </trkpt>
+    <trkpt lat="37.125151" lon="-8.608083">
+    </trkpt>
+    <trkpt lat="37.126157" lon="-8.60772">
+    </trkpt>
+    <trkpt lat="37.126343" lon="-8.608074">
+    </trkpt>
+    <trkpt lat="37.126189" lon="-8.607726">
+    </trkpt>
+    <trkpt lat="37.126487" lon="-8.605389">
+    </trkpt>
+    <trkpt lat="37.126102" lon="-8.604315">
+    </trkpt>
+    <trkpt lat="37.126329" lon="-8.602805">
+    </trkpt>
+    <trkpt lat="37.126398" lon="-8.599268">
+    </trkpt>
+    <trkpt lat="37.126298" lon="-8.598686">
+    </trkpt>
+    <trkpt lat="37.125688" lon="-8.5975">
+    </trkpt>
+    <trkpt lat="37.126496" lon="-8.59576">
+    </trkpt>
+    <trkpt lat="37.126394" lon="-8.595167">
+    </trkpt>
+    <trkpt lat="37.126137" lon="-8.595006">
+    </trkpt>
+    <trkpt lat="37.123378" lon="-8.595302">
+    </trkpt>
+    <trkpt lat="37.123143" lon="-8.59483">
+    </trkpt>
+    <trkpt lat="37.122897" lon="-8.594907">
+    </trkpt>
+    <trkpt lat="37.123167" lon="-8.594797">
+    </trkpt>
+    <trkpt lat="37.123163" lon="-8.59467">
+    </trkpt>
+    <trkpt lat="37.122839" lon="-8.593159">
+    </trkpt>
+    <trkpt lat="37.122524" lon="-8.590109">
+    </trkpt>
+    <trkpt lat="37.122081" lon="-8.588925">
+    </trkpt>
+    <trkpt lat="37.121245" lon="-8.585516">
+    </trkpt>
+    <trkpt lat="37.121106" lon="-8.584438">
+    </trkpt>
+    <trkpt lat="37.120794" lon="-8.583416">
+    </trkpt>
+    <trkpt lat="37.1210176" lon="-8.5828712">
+    </trkpt>
+  </trkseg>
+</trk>
+</gpx>

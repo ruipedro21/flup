@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 2.2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogr="http://osgeo.org/gdal" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata><bounds minlat="39.488358000000062" minlon="-7.967101999999954" maxlat="39.490641000000039" maxlon="-7.951782529999946"/></metadata>                  
+<trk>
+  <name>Passadiço do Alamal - Gavião</name>
+  <extensions>
+    <ogr:tessellate>1.0</ogr:tessellate>
+    <ogr:extrude>0.0</ogr:extrude>
+    <ogr:visibility>-1.0</ogr:visibility>
+    <ogr:drawOrder>0.0</ogr:drawOrder>
+  </extensions>
+  <trkseg>
+    <trkpt lat="39.490425923000032" lon="-7.951782529999946">
+    </trkpt>
+    <trkpt lat="39.490591851000033" lon="-7.951958735999938">
+    </trkpt>
+    <trkpt lat="39.490631497000038" lon="-7.952199550999978">
+    </trkpt>
+    <trkpt lat="39.490641" lon="-7.952483">
+    </trkpt>
+    <trkpt lat="39.490387745000078" lon="-7.954441772999928">
+    </trkpt>
+    <trkpt lat="39.490415644000052" lon="-7.955346297999938">
+    </trkpt>
+    <trkpt lat="39.490336352000043" lon="-7.956120136999971">
+    </trkpt>
+    <trkpt lat="39.490524" lon="-7.956773">
+    </trkpt>
+    <trkpt lat="39.490483190000077" lon="-7.957309527999939">
+    </trkpt>
+    <trkpt lat="39.490381872000057" lon="-7.957730953999942">
+    </trkpt>
+    <trkpt lat="39.490386085000068" lon="-7.958167636999974">
+    </trkpt>
+    <trkpt lat="39.490442075000033" lon="-7.958798469999977">
+    </trkpt>
+    <trkpt lat="39.490274680000027" lon="-7.959112703999949">
+    </trkpt>
+    <trkpt lat="39.490221" lon="-7.959347">
+    </trkpt>
+    <trkpt lat="39.490282021000041" lon="-7.960399007999968">
+    </trkpt>
+    <trkpt lat="39.490168956000048" lon="-7.960584024999946">
+    </trkpt>
+    <trkpt lat="39.49012784100006" lon="-7.960766104999948">
+    </trkpt>
+    <trkpt lat="39.490146930000037" lon="-7.961095022999928">
+    </trkpt>
+    <trkpt lat="39.490142525000067" lon="-7.961234518999959">
+    </trkpt>
+    <trkpt lat="39.490013868000062" lon="-7.961531468999965">
+    </trkpt>
+    <trkpt lat="39.489832" lon="-7.962032">
+    </trkpt>
+    <trkpt lat="39.489878" lon="-7.962829">
+    </trkpt>
+    <trkpt lat="39.489750466000032" lon="-7.963134607999962">
+    </trkpt>
+    <trkpt lat="39.489732846000038" lon="-7.963312282999937">
+    </trkpt>
+    <trkpt lat="39.489608033000025" lon="-7.963936345999969">
+    </trkpt>
+    <trkpt lat="39.489511748000041" lon="-7.964558451999949">
+    </trkpt>
+    <trkpt lat="39.489348129000064" lon="-7.964964214999952">
+    </trkpt>
+    <trkpt lat="39.489307014000076" lon="-7.965439971999956">
+    </trkpt>
+    <trkpt lat="39.489191012000049" lon="-7.965739521999978">
+    </trkpt>
+    <trkpt lat="39.489036832000068" lon="-7.965873144999932">
+    </trkpt>
+    <trkpt lat="39.48888" lon="-7.966293">
+    </trkpt>
+    <trkpt lat="39.488358" lon="-7.966748">
+    </trkpt>
+    <trkpt lat="39.488403" lon="-7.967102">
+    </trkpt>
+  </trkseg>
+</trk>
+</gpx>

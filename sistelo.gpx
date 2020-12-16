@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" standalone="yes"?>
 <gpx version="1.1" creator="GDAL 2.2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogr="http://osgeo.org/gdal" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
 <metadata><bounds minlat="41.921008000000029" minlon="-8.442768999999942" maxlat="41.973718000000076" maxlon="-8.374165999999946"/></metadata>                  
 <trk>

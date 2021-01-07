@@ -99,16 +99,13 @@ h1{
     line-height: 1.45 !important; 
     text-align: center; 
     text-decoration: none; 
-    font: bold 18px 'Lucida Console', Monaco, monospace; 
+    font: 16px 'Lucida Console', Monaco, monospace; 
   }
   .bind_img{
     width: 350px;
     height: 200px;
   }
-  .table_img{
-    width: 300px;
-    height: 150px;
-  }
+  
   .next{
     color: whitesmoke;
     padding: 5px;

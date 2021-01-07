@@ -361,11 +361,11 @@ background: none;
 
 /*Caixas*/
 
-#aboutUs .txtHead{
+#sobre .txtHead{
 background:#fff;
 padding:20px 10px;
 }
-#aboutUs .txtHead .fa {
+#sobre .txtHead .fa {
 font-size: 58px;
 color: #000000c4;
 }

@@ -99,7 +99,7 @@ h1{
     line-height: 1.45 !important; 
     text-align: center; 
     text-decoration: none; 
-    font: 16px 'Lucida Console', Monaco, monospace; 
+    font-size: 15;
   }
   .bind_img{
     width: 350px;

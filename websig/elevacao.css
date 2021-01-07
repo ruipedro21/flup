@@ -1,0 +1,32 @@
+#map{
+	border: #CC4646 2px solid;
+}
+.title h1{
+	text-align: center;
+	color: #CC4646;
+	
+}
+body{
+	background-color: whitesmoke;
+}
+.height-focus.line,
+.height-focus-label {
+		display: none;
+		}
+
+.elevation.leaflet-control {
+        margin-bottom: 17.5px;
+        }
+.gpx-summary {
+			font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			position: relative;
+			background: rgba(255, 255, 255, 0.8);
+			max-width: 600px;
+			text-align: center;
+		}
+
+.gpx-summary .summaryvalue {
+            font-weight: bold;
+			color: rgb(175, 2, 2);
+		}

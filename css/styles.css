@@ -52,7 +52,7 @@ p {
   background-color: #CC4646;
   color: white;
   padding: 16px;
-  font-size: 22px;
+  font-size: 21px;
   border: none;
   padding-top: 20px;
 }
@@ -232,7 +232,7 @@ background: none;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    font-size: 21px;
+    font-size: 20px;
     line-height: normal;
     margin: 17px;
     padding: 6px 10px !important;

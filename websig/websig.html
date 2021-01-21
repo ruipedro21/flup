@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passadiços de Portugal</title>
+
+    <link rel="stylesheet" type="text/css" href="websig.css"> 
+    <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Leaflet (JS/CSS) -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.3.2/dist/leaflet.js"></script>
+	<!-- D3.js -->
+	<script src="https://unpkg.com/d3@4.13.0/build/d3.min.js" charset="utf-8"></script>  
+
+</head>
+<body>
+    <h1>Passadiços de Portugal</h1>
+    <div id="map" class="custom-popup" style="width: 100%; height: 800px"></div> 
+  <br> <a href="https://ruipedro21.github.io/flup/websig/elevacao.html" class="next" target="_blank">Elevação Dinâmica</a>
+   
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ruipedro21.github.io/flup/json/alvor.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/sistelo.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/paiva.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/gaia.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/aveiro.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/orvalho.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/alamal.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/fiaes.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/rquelhas.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/penedo.geojson"></script>
+    <script src="https://ruipedro21.github.io/flup/json/tejo.geojson"></script>
+
+    <script>
+    
+    var street   = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png'),
+    topo  = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'),
+    satelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+        
+    var baseLayers = {
+		"Open Street Map": street,
+        "Topográfico": topo,
+        "Satélite": satelite
+	};
+        var lat = 39.579556;
+        var lng = -5.139716;
+        var zoom = 6.5;
+
+    var map = L.map('map',{layers: [street], zoomControl: false });  
+   
+    var popup = L.popup();
+        
+    //function onMapClick(e) { 
+    //    popup 
+   //     .setLatLng(e.latlng) 
+    //    .setContent("<h2> Clicou nas coordenadas:</h2>" + e.latlng.toString()) 
+   //     .openOn(map); }
+      //  map.on('click', onMapClick);
+               
+    map.setView([lat, lng], zoom);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Rui Andrade',
+            maxZoom: 18
+        }).addTo(map);
+
+    L.Control.zoomHome = L.Control.extend({
+        options: {
+            position: 'topleft',
+            zoomInText: '+',
+            zoomInTitle: 'Zoom in',
+            zoomOutText: '-',
+            zoomOutTitle: 'Zoom out',
+            zoomHomeText: '<i class="fa fa-home" style="line-height:1.95;"></i>',
+            zoomHomeTitle: 'Zoom home'          
+        },
+
+    onAdd: function (map) {
+        var controlName = 'gin-control-zoom',
+            container = L.DomUtil.create('div', controlName + ' leaflet-bar'),
+            options = this.options;
+
+        this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
+        controlName + '-in', container, this._zoomIn);
+        this._zoomHomeButton = this._createButton(options.zoomHomeText, options.zoomHomeTitle,
+        controlName + '-home', container, this._zoomHome);
+        this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
+        controlName + '-out', container, this._zoomOut);
+
+        this._updateDisabled();
+        map.on('zoomend zoomlevelschange', this._updateDisabled, this);
+        return container;
+    },
+
+    onRemove: function (map) {
+        map.off('zoomend zoomlevelschange', this._updateDisabled, this);
+    },
+
+    _zoomIn: function (e) {
+        this._map.zoomIn(e.shiftKey ? 3 : 1);
+    },
+
+    _zoomOut: function (e) {
+        this._map.zoomOut(e.shiftKey ? 3 : 1);
+    },
+
+    _zoomHome: function (e) {
+        map.setView([lat, lng], zoom);
+    },
+
+    _createButton: function (html, title, className, container, fn) {
+        var link = L.DomUtil.create('a', className, container);
+        link.innerHTML = html;
+        link.href = '#';
+        link.title = title;
+
+        L.DomEvent.on(link, 'mousedown dblclick', L.DomEvent.stopPropagation)
+            .on(link, 'click', L.DomEvent.stop)
+            .on(link, 'click', fn, this)
+            .on(link, 'click', this._refocusOnMap, this);
+
+        return link;
+    },
+
+    _updateDisabled: function () {
+        var map = this._map,
+            className = 'leaflet-disabled';
+
+        L.DomUtil.removeClass(this._zoomInButton, className);
+        L.DomUtil.removeClass(this._zoomOutButton, className);
+
+        if (map._zoom === map.getMinZoom()) {
+            L.DomUtil.addClass(this._zoomOutButton, className);
+        }
+        if (map._zoom === map.getMaxZoom()) {
+            L.DomUtil.addClass(this._zoomInButton, className);
+        }
+    }
+});
+    
+    var zoomHome = new L.Control.zoomHome();
+    zoomHome.addTo(map);
+
+            var palvor = L.geoJSON(alvor,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+                       
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/CTLPSFK1Rz6RuHcr5' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-alvor-algarve/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/alvor.jpg' alt='foto' class='bind_img'/> </a>");         
+        }}).addTo(map);
+            palvor.bindTooltip("<h2>Passadiços do Alvor</h2> <img src='https://ruipedro21.github.io/flup/graficos/alvor_G2.png' alt='foto' class='pop_img' />"); 
+
+            var psistelo = L.geoJSON(sistelo,{
+                color: '#b3b300',
+                weight: 10,
+
+        onEachFeature: function (feature, layer) { 
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/npwgPXLKhZzFrixdA' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-do-sistelo-ecovia-vez/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/sistelo.jpg' alt='foto' class='bind_img'/> </a>");         
+        }}).addTo(map);
+            psistelo.bindTooltip("<h2>Passadiços de Sistelo</h2><img src='https://ruipedro21.github.io/flup/graficos/sistelo_G2.png' alt='foto' class='pop_img'/>"); 
+
+            var ppaiva = L.geoJSON(paiva,{
+                color: '#ff0000',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/PwGuTyCcZT6uS1U38' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/visitar-passadicos-do-paiva-arouca/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/paiva.jpg' alt='foto' class='bind_img'/> </a>");         
+        }}).addTo(map);
+            ppaiva.bindTooltip("<h2>Passadiços do Paiva</h2><img src='https://ruipedro21.github.io/flup/graficos/paiva_G2.png' alt='foto' class='pop_img'/>");
+
+
+            var pgaia = L.geoJSON(gaia,{
+                color: '#b3b300',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/98VQPq5in8RueCRGA' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-portugal/#Passadicos_Maritimos_de_Gaia_8211_Espinho' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/gaia.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a>");         
+        }}).addTo(map);
+            pgaia.bindTooltip("<h2>Passadiços Marítimos de Gaia</h2><img src='https://ruipedro21.github.io/flup/graficos/gaia_G2.png' alt='foto' class='pop_img'/>");
+
+            var paveiro = L.geoJSON(aveiro,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " (Vilarinho) <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/WQesa2yTvVQCY5iW9' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-de-aveiro/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/aveiro.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a>");         
+        }}).addTo(map);
+            paveiro.bindTooltip("<h2>Passadiços da Ria de Aveiro</h2><img src='https://ruipedro21.github.io/flup/graficos/aveiro_G2.png' alt='foto' class='pop_img'/>");
+            
+            var porvalho = L.geoJSON(orvalho,{
+                color: '#b3b300',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/G3Z8bDcJAn6tYpfa7' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-do-orvalho-cascata/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/orvalho.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a>");         
+        }}).addTo(map);
+            porvalho.bindTooltip("<h2>Passadiços do Orvalho</h2><img src='https://ruipedro21.github.io/flup/graficos/orvalho_G2.png' alt='foto' width='780px' height='200px'/>");
+
+            var palamal = L.geoJSON(alamal,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/worybASiBf7kpjPu7' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadico-do-alamal/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/alamal.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a> ");         
+        }}).addTo(map);
+            palamal.bindTooltip("<h2>Passadiços do Alamal</h2>'<img src='https://ruipedro21.github.io/flup/graficos/alamal_G2.png' alt='foto' class='pop_img'/>"); 
+
+            var pfiaes = L.geoJSON(fiaes,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/gaB6YX5SHQXLGgav8' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-do-rio-uima-fiaes/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/fiaes.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a> ");         
+        }}).addTo(map);
+            pfiaes.bindTooltip("<h2>Passadiços de Fiães</h2><img src='https://ruipedro21.github.io/flup/graficos/fiaes_G2.png' alt='foto' class='pop_img'/>"); 
+
+            var prquelhas = L.geoJSON(rquelhas,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/CkYMTBEitnCHos2F9' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-ribeira-das-quelhas/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/quelhas.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a> ");         
+        }}).addTo(map);
+            prquelhas.bindTooltip("<h2>Passadiços da Ribeira das Quelhas</h2><img src='https://ruipedro21.github.io/flup/graficos/rquelhas_G2.png' alt='foto' class='pop_img'/>"); 
+
+            var ppenedo = L.geoJSON(penedo,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/6TvvJRahR9N9YjKi6' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/praia-cascata-do-penedo-furado/' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/penedo.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a> ");         
+        }}).addTo(map);
+            ppenedo.bindTooltip("<h2>Passadiços do Penedo Furado</h2><img src='https://ruipedro21.github.io/flup/graficos/penedo_G2.png' alt='foto' class='pop_img'/>"); 
+
+            var ptejo = L.geoJSON(tejo,{
+                color: '#009933',
+                weight: 10,
+                
+        onEachFeature: function (feature, layer) { 
+            
+            let nome = feature.properties.Name;
+            let dif = feature.properties.dificul;
+            let local = feature.properties.inicio_fim;
+            let dist = feature.properties.distancia;
+            layer.bindPopup("<h1> " + nome + "</h1><h2> Dificuldade: "  + dif + "</h2> <h2>Início/fim: " + local + " <br><br> Distancia: "+ dist +"<br><br><a href='https://goo.gl/maps/bVGJ1FpKNzx7QCqr7' target='_blank'>Direções Google Maps  <i class='fa fa-car' aria-hidden='true'></i></a><p>Para mais informações clique na imagem</p><a href='https://www.vagamundos.pt/passadicos-portugal/#Passadicos_do_Tejo' target='_blank'> <img src='https://ruipedro21.github.io/flup/fotosP/tejo.jpg' alt='foto' class='bind_img' width='350' height='200'/> </a> ");         
+        }}).addTo(map);
+            ptejo.bindTooltip("<h2>Passadiços do Tejo</h2>'<img src='https://ruipedro21.github.io/flup/graficos/tejo_G2.png' alt='foto' class='pop_img' width='700px' height='350px'/>");
+             
+            // LEGENDA
+            var legend2 = L.control({ position: "bottomleft" });
+
+                legend2.onAdd = function(map) {
+                var div = L.DomUtil.create("div", "legend2");
+                div.innerHTML += "<h4>Dificuldade</h4>";
+                div.innerHTML += '<i style="background: #009933"></i><span>Fácil</span><br>';
+                div.innerHTML += '<i style="background: #b3b300"></i><span>Moderado</span><br>';
+                div.innerHTML += '<i style="background: #ff0000"></i><span>Difícil</span><br>';            
+                return div;
+                };
+                legend2.addTo(map);            
+           
+                // FIM LEGENDA
+                var pfacil = L.layerGroup([palvor, pfiaes, paveiro, prquelhas, ppenedo, palamal, ptejo]);
+                var pmoderado = L.layerGroup([pgaia, psistelo, porvalho]);
+                var todosl = L.layerGroup([palvor, pfiaes, paveiro, prquelhas, ppenedo, palamal, ptejo, pgaia, psistelo, porvalho, ppaiva]).addTo(map);
+                var pdificeis = L.layerGroup([ppaiva]);
+                
+                //Escolha Layers
+            var overlayMaps = {
+            "<span style='font-size: 16px'>Adicionar/Remover Todos</span>": todosl,
+            "<span style='font-size: 16px'>Passadiços Fáceis</span>": pfacil,
+            "<span style='font-size: 16px'>Passadiços Moderados</span>": pmoderado,
+            "<span style='font-size: 16px'>Passadiços Difíceis</span>": pdificeis,
+           };
+         
+           L.control.layers(null, overlayMaps, {
+            collapsed: false,
+            position: "bottomleft",
+                        
+        }).addTo(map);
+        L.control.layers(null,baseLayers,{
+            collapsed: true,
+            position: "topleft",
+                       
+        }).addTo(map);
+
+        L.control.scale({
+            position: "bottomright",
+        }).addTo(map);
+        </script>
+</body>
+</html>
